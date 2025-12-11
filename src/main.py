@@ -1,6 +1,7 @@
-from puzzle_generator import generate_puzzle
+from src.puzzle_generator import generate_puzzle
 from src.tracker import PerformanceTracker
-from src.adaptive_engine import adjust_difficulty
+from src.yatacku import adjust_difficulty
+
 
 
 import time
