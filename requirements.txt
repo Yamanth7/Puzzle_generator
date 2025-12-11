@@ -1,10 +1,1 @@
-Start
-├── Enter name
-├── Choose initial difficulty (Easy/Medium/Hard)
-├── Loop (e.g., 10 puzzles):
-│   ├── Generate puzzle
-│   ├── User answers (timed)
-│   ├── Track performance
-│   ├── Adaptive engine decides next difficulty
-│   └── Repeat
-└── End: Display summary (accuracy, avg time, next level)
+# No external dependencies required

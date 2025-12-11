@@ -2,16 +2,36 @@ import random
 
 def generate_puzzle(difficulty):
     if difficulty == "easy":
-        num1, num2 = random.randint(1, 9), random.randint(1, 9)
+        num1 = random.randint(1, 9)
+        num2 = random.randint(1, 9)
         op = random.choice(["+", "-"])
+
     elif difficulty == "medium":
-        num1, num2 = random.randint(10, 50), random.randint(1, 20)
+        num1 = random.randint(10, 50)
+        num2 = random.randint(1, 20)
         op = random.choice(["+", "-", "*"])
+
     else:  # hard
-        num1, num2 = random.randint(10, 100), random.randint(1, 20)
         op = random.choice(["*", "/"])
-        if op == "/" and num2 == 0: num2 = 1  # Avoid division by zero
+        
+        if op == "*":
+            num1 = random.randint(10, 100)
+            num2 = random.randint(5, 20)
+        
+        else:  # clean division (always integer)
+            num2 = random.randint(2, 12)
+            answer = random.randint(2, 12)
+            num1 = num2 * answer   # ensures num1 / num2 = answer exactly
+
+    # Calculate correct answer safely
+    if op == "+":
+        answer = num1 + num2
+    elif op == "-":
+        answer = num1 - num2
+    elif op == "*":
+        answer = num1 * num2
+    else:  # op == "/"
+        answer = num1 // num2    # guaranteed integer
     
     question = f"{num1} {op} {num2}"
-    answer = eval(question)  # Simple eval for demo; in production, use safer parsing
-    return question, int(answer)
+    return question, answer
