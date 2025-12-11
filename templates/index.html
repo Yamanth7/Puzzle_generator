@@ -2,28 +2,24 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Puzzle Generator</title>
+    <title>Math Adventures</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Puzzle Generator</h1>
-        <form method="POST" action="/generate">
-            <label>Select difficulty:</label>
-            <select name="difficulty">
-                <option {% if difficulty=='easy' %}selected{% endif %}>easy</option>
-                <option {% if difficulty=='medium' %}selected{% endif %}>medium</option>
-                <option {% if difficulty=='hard' %}selected{% endif %}>hard</option>
-            </select>
-            <button type="submit">Generate Puzzle</button>
+        <h1>Math Adventures</h1>
+        <p>Current difficulty: {{ difficulty }}</p>
+        {% if feedback %}
+            <p class="feedback">{{ feedback }}</p>
+        {% endif %}
+        <form method="POST">
+            <input type="hidden" name="question" value="{{ puzzle }}">
+            <label>{{ puzzle }} = </label>
+            <input type="text" name="answer" required>
+            <button type="submit">Submit</button>
         </form>
 
-        {% if puzzle %}
-        <div class="puzzle">
-            <h2>Your Puzzle:</h2>
-            <pre>{{ puzzle }}</pre>
-        </div>
-        {% endif %}
+        <h3>Session Accuracy: {{ (accuracy * 100)|round(2) }}%</h3>
     </div>
 </body>
 </html>
