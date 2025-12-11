@@ -1,0 +1,1 @@
+ The task is to build a minimal adaptive math learning prototype. It needs to adjust puzzle difficulty based on user performance using rule-based logic or a lightweight ML model.
