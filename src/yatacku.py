@@ -1,4 +1,4 @@
- def adjust_difficulty(current, history):
+def adjust_difficulty(current, history):
     """
     Adjusts difficulty based on last 3 attempts.
     - Promote: 100% accuracy + fast solving (<5 sec avg)
